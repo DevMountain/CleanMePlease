@@ -1,0 +1,17 @@
+PODS:
+  - Mantle (1.5.4):
+    - Mantle/extobjc (= 1.5.4)
+  - Mantle/extobjc (1.5.4)
+  - SDWebImage (3.7.2):
+    - SDWebImage/Core (= 3.7.2)
+  - SDWebImage/Core (3.7.2)
+
+DEPENDENCIES:
+  - Mantle (~> 1.5.4)
+  - SDWebImage (~> 3.7)
+
+SPEC CHECKSUMS:
+  Mantle: 60acd0cd363e27d945bda0a6b8e90577112d28f3
+  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+
+COCOAPODS: 0.36.0
