@@ -7,29 +7,64 @@
 //
 
 #import "ViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic) NSArray *data;
+@property (nonatomic)          NSArray     *data;
 @property (nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
+
 @implementation ViewController
+
+#pragma mark -
+#pragma mark ViewController Methods
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-    
-    NSArray *jsonObjects = [NSJSONSerialization JSONObjectWithData:[NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://jsonplaceholder.typicode.com/photos"]] returningResponse:&response error:&error] options:0 error:nil];
-    
-    self.data = jsonObjects;
-    
-    [self.tableView reloadData];
+    [self fetchData];
 }
+
+#pragma mark - Private Methods
+
+// Fetches data from the api and reloads the table view when finished
+- (void)fetchData
+{
+    NSURL *url = [NSURL URLWithString:@"http://jsonplaceholder.typicode.com/photos"];
+    
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        if (error) {
+            [self handleError:error];
+            return;
+        }
+        
+        id jsonObjects = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+        
+        if (error) {
+            [self handleError:error];
+            return;
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.data = jsonObjects;
+            [self.tableView reloadData];
+        });
+    }];
+    
+    [dataTask resume];
+}
+
+- (void)handleError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message:error.localizedDescription delegate:nil cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alert show];
+}
+
+#pragma mark -
+#pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -38,20 +73,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell        = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    NSDictionary    *data        = self.data[indexPath.row];
+    NSURL           *imageUrl    = [NSURL URLWithString:data[@"thumbnailUrl"]];
+    UIImage         *placeholder = [UIImage imageNamed:@"eeeeee.gif"];
     
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-    cell.textLabel.text = self.data[indexPath.row][@"title"];
-    cell.imageView.image = [UIImage imageWithData:[NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.data[indexPath.row][@"thumbnailUrl"]]] returningResponse:nil error:nil]];
+    cell.textLabel.text = data[@"title"];
+    
+    [cell.imageView sd_setImageWithURL:imageUrl placeholderImage:placeholder];
     
     return cell;
 }
-
-
-
-
-
-
-
-
 
 @end

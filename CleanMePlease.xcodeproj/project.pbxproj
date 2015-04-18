@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2BD71DB1F8077D33815D8093 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6BFB88B574E4A76093FD88 /* libPods.a */; };
+		627D7BAB1AE16D0600AD1C46 /* eeeeee.gif in Resources */ = {isa = PBXBuildFile; fileRef = 627D7BAA1AE16D0600AD1C46 /* eeeeee.gif */; };
 		DF8373E81AE0D32100A48C2B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8373E71AE0D32100A48C2B /* main.m */; };
 		DF8373EB1AE0D32100A48C2B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8373EA1AE0D32100A48C2B /* AppDelegate.m */; };
 		DF8373EE1AE0D32100A48C2B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8373ED1AE0D32100A48C2B /* ViewController.m */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		2B111047E87101713D8A4DE8 /* Pods-CleanMePlease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanMePlease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CleanMePlease/Pods-CleanMePlease.debug.xcconfig"; sourceTree = "<group>"; };
+		627D7BAA1AE16D0600AD1C46 /* eeeeee.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = eeeeee.gif; sourceTree = "<group>"; };
 		6B25D7ACB4AE19296824BF88 /* libPods-CleanMePlease.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CleanMePlease.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B89D66269ED1569D28F53B7 /* Pods-CleanMePlease.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CleanMePlease.release.xcconfig"; path = "Pods/Target Support Files/Pods-CleanMePlease/Pods-CleanMePlease.release.xcconfig"; sourceTree = "<group>"; };
 		7D6BFB88B574E4A76093FD88 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +116,7 @@
 		DF8373E51AE0D32100A48C2B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				627D7BAA1AE16D0600AD1C46 /* eeeeee.gif */,
 				DF8373E61AE0D32100A48C2B /* Info.plist */,
 				DF8373E71AE0D32100A48C2B /* main.m */,
 			);
@@ -229,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				627D7BAB1AE16D0600AD1C46 /* eeeeee.gif in Resources */,
 				DF8373F11AE0D32100A48C2B /* Main.storyboard in Resources */,
 				DF8373F61AE0D32100A48C2B /* LaunchScreen.xib in Resources */,
 				DF8373F31AE0D32100A48C2B /* Images.xcassets in Resources */,
